@@ -15,7 +15,7 @@ Just type stuff.  Angular binding makes it so that when you update your code and
 * Some kind of design/styling (I didn't feel like doing it at the time)
 * Something better than eval to run code - possibly Angular's $eval
 * Persistent storage or URL encoding, for sharing stuff
-* Make new tests appear immediately after clicked element in list, instead of sometimes before and sometimes after
+* Overwrite previously successful code if new version does not eval
 
 ## Contributing
 
