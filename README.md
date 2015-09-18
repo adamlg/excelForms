@@ -1,9 +1,9 @@
 
 ## Overview
 
-LiveTesting is meant to make basic code testing simple.  Type your JavaScript into the textarea on the left, and add your test statements on the right.  That's it.  Add as many or as few as you want.
+LiveTester is meant to make basic code testing simple.  Type your JavaScript into the textarea on the left, and add your test statements on the right.  That's it.  Add as many or as few as you want.
 
-This is built with Angular, Express and Node, but all of the work is done in Angular.
+This is built with Angular, Express and Node, but all of the heavy lifting is done in Angular.  You can try LiveTester out here: http://adamlg-livetester.herokuapp.com/
 
 ## Usage
 
