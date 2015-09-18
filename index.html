@@ -5,16 +5,19 @@
 
 <html ng-app="liveTester">
 
-	<div ng-controller="codeCtrl" style="float:left; width:400px; height:100%; background-color:red">
-		<textarea placeholder="Write your code here." ng-model="code" style="width:400px; height:500px"></textarea>
+	<div ng-controller="codeCtrl" style="float:left; width:400px; height:100%">
+		<textarea placeholder="Write your code here." ng-model="code" ng-blur="runTests()" style="width:400px; height:500px"></textarea>
 		<button ng-click="runTests()">Click to run your code.</button>
 	</div>
 
-	<div ng-controller="testCtrl" style="width:400px; height:100%; background-color:green; float:left">
-		<div ng-repeat="test in tests" style="width:400px">
+	<div ng-controller="testCtrl" style="width:400px; height:100%; float:left; border-color:black; border-style:solid; border-width:2px">
+		<div ng-repeat="test in tests track by $index" style="width:100%; overflow:auto">
 			<button ng-click="newTest()" style="float:left">+</button>
-			<input placeholder="Write your test here." ng-model="test.code" ng-blur="test.result=result(test.code)"></input>
-			<div>{{test.result}}</div>
+			<div style="display:block; float:left">
+				<input style="display:block" placeholder="Name your test here."></input>
+				<input style="display:block" placeholder="Write your test here." ng-focus="test.result='Working...'" ng-model="test.code" ng-blur="update(test)" ng-keypress="enterCheck($event.which,test)"></input>
+				<div>{{test.result}}</div>
+			</div>
 		</div>
 	</div>
 
