@@ -1,0 +1,21 @@
+<script src="./bower_components/angular/angular.js"></script>
+<script src="./bower_components/angular-route/angular-route.js"></script>
+<script src="./codeController.js"></script>
+<script src="./testController.js"></script>
+
+<html ng-app="liveTester">
+
+	<div ng-controller="codeCtrl" style="float:left; width:400px; height:100%; background-color:red">
+		<textarea placeholder="Write your code here." ng-model="code" style="width:400px; height:500px"></textarea>
+		<button ng-click="runTests()">Click to run your code.</button>
+	</div>
+
+	<div ng-controller="testCtrl" style="width:400px; height:100%; background-color:green; float:left">
+		<div ng-repeat="test in tests" style="width:400px">
+			<button ng-click="newTest()" style="float:left">+</button>
+			<input placeholder="Write your test here." ng-model="test.code"></input>
+			<div>{{result(test.code)}}</div>
+		</div>
+	</div>
+
+</html>
