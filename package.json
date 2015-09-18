@@ -4,11 +4,13 @@
   "description": "",
   "main": "",
   "scripts": {
-      "start":"node server.js"
-    },
+    "start": "node server.js",
+    "postinstall": "bower install"
+  },
   "author": "Adam",
   "dependencies": {
     "body-parser": "^1.13.3",
+    "bower": "^1.5.2",
     "express": "^4.13.3"
   }
 }
