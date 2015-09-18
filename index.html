@@ -13,8 +13,8 @@
 	<div ng-controller="testCtrl" style="width:400px; height:100%; background-color:green; float:left">
 		<div ng-repeat="test in tests" style="width:400px">
 			<button ng-click="newTest()" style="float:left">+</button>
-			<input placeholder="Write your test here." ng-model="test.code"></input>
-			<div>{{result(test.code)}}</div>
+			<input placeholder="Write your test here." ng-model="test.code" ng-blur="test.result=result(test.code)"></input>
+			<div>{{test.result}}</div>
 		</div>
 	</div>
 

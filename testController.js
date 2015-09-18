@@ -14,9 +14,9 @@ angular.module('liveTester',[])
 .controller('testCtrl', function($scope){
 
 	console.log('testCtrl')
-	$scope.tests=[{code:''}]
+	$scope.tests=[{code:'',result='Add a test to get started.'}]
 
-	$scope.newTest = function() {$scope.tests.push({code:''})}
+	$scope.newTest = function() {$scope.tests.push({code:'',result='Add a test to get started.'})}
 
 	$scope.result = function(text){
 		var testedItem = text.replace(/\s+/g,'').split(/[=<>]+/)[0]
