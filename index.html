@@ -14,7 +14,7 @@
 		<div ng-repeat="test in tests track by $index" style="width:100%; overflow:auto">
 			<button ng-click="newTest()" style="float:left">+</button>
 			<div style="display:block; float:left">
-				<input style="display:block" placeholder="Name your test here."></input>
+				<input style="display:block" placeholder="Name your test here." ng-model="test.label"></input>
 				<input style="display:block" placeholder="Write your test here." ng-focus="test.result='Working...'" ng-model="test.code" ng-blur="update(test)" ng-keypress="enterCheck($event.which,test)"></input>
 				<div>{{test.result}}</div>
 			</div>
