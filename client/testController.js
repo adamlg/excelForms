@@ -19,13 +19,13 @@ angular.module('liveTester',[])
 	$scope.tests=[{code:'',result:'Your test\'s result will be shown here.', status:'tomato'}]
 
 	$scope.newTest = function(item) {
-		var place = $scope.tests.indexOf(item)+2
-		if(place > $scope.tests.length) {
-			$scope.tests.push({code:'',result:'Your test\'s result will be shown here.', status:'tomato'})
-			return
-		}
-		
+		var place = $scope.tests.indexOf(item)+1
 		$scope.tests = $scope.tests.slice(0,place).concat({code:'',result:'Your test\'s result will be shown here.', status:'tomato'},$scope.tests.slice(place))
+	}
+
+	$scope.removeTest=function(item) {
+		var place = $scope.tests.indexOf(item)
+		$scope.tests.splice(place,1)
 	}
 
 	$scope.result = function(test){
