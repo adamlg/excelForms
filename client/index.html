@@ -1,22 +1,23 @@
-<script src="./bower_components/angular/angular.js"></script>
-<script src="./bower_components/angular-route/angular-route.js"></script>
-<script src="./codeController.js"></script>
+<script src="./angular/angular.js"></script>
 <script src="./testController.js"></script>
 
 <html ng-app="liveTester">
+	<div style="width:800px; margin-bottom:5px">
+		Write your code in the left box, and create tests that evaluate to true or false (usually using some combination of <,>, and =) in the boxes on the right.  All of your tests will automatically update when you change your code and either hit Ctrl+Enter, click the button at the bottom, or move focus off of the textarea.  The tests also update when you change them.  Any errors are indicated below each individual test.
+	</div>
 
-	<div ng-controller="codeCtrl" style="float:left; width:400px; height:100%">
-		<textarea placeholder="Write your code here." ng-model="code" ng-blur="runTests()" style="width:400px; height:500px"></textarea>
+	<div ng-controller="codeCtrl" style="float:left; width:400px; height:100%; margin-right:5px; overflow:auto">
+		<textarea placeholder="Write your code here." ng-model="code" ng-keypress="checkCode($event)" ng-blur="runTests()" style="width:400px; height:500px"></textarea>
 		<button ng-click="runTests()">Click to run your code.</button>
 	</div>
 
-	<div ng-controller="testCtrl" style="width:400px; height:100%; float:left; border-color:black; border-style:solid; border-width:2px">
-		<div ng-repeat="test in tests track by $index" style="width:100%; overflow:auto">
+	<div ng-controller="testCtrl" style="width:400px; height:100%; float:left; border-color:black; border-style:solid; border-width:2px; overflow:auto">
+		<div ng-repeat="test in tests track by $index" style="width:100%; overflow:auto; margin-bottom:5px">
 			<button ng-click="newTest()" style="float:left">+</button>
-			<div style="display:block; float:left">
-				<input style="display:block" placeholder="Name your test here." ng-model="test.label"></input>
-				<input style="display:block" placeholder="Write your test here." ng-focus="test.result='Working...'" ng-model="test.code" ng-blur="update(test)" ng-keypress="enterCheck($event.which,test)"></input>
-				<div>{{test.result}}</div>
+			<div style="display:block; float:left; width:85%">
+				<input style="display:block; width:100%" placeholder="Name your test here." ng-model="test.label"></input>
+				<input style="display:block; width:100%" placeholder="Write your test here." ng-focus="test.result='Working...'" ng-model="test.code" ng-blur="update(test)" ng-keypress="enterCheck($event.which,test)"></input>
+				<div ng-style="{'background-color':test.status}">{{test.result}}</div>
 			</div>
 		</div>
 	</div>

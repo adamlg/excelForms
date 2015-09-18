@@ -6,7 +6,6 @@
   "scripts": {},
   "author": "Adam",
   "dependencies": {
-    "angular": "1.4.5",
-    "angular-route": "1.4.5"
+    "angular": "1.4.5"
   }
 }

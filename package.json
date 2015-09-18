@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "description": "",
   "main": "",
-  "scripts": {},
+  "scripts": {
+      "start":"node server.js"
+    },
   "author": "Adam",
   "dependencies": {
     "body-parser": "^1.13.3",
