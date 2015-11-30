@@ -1,0 +1,11 @@
+<div style='display:block; position:relative; padding-bottom:6px'>
+	<span>Title:</span>
+		<input class='title'></input>
+	<span>Percentage: </span>
+		<input ng-model='percentage' class='percentage'></input>
+	<span>Dollar amount: </span>
+		<input ng-model='dollars' class='dollars'></input>
+	<button ng-click='newElem()'>New root element</button>
+	<button ng-click='newChild()'>Child element</button>
+	<button ng-hide='initial' ng-click='removeElem()'>Remove this element</button>
+</div>

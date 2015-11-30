@@ -1,4 +1,66 @@
 angular.module('liveTester',[])
+.directive('formItem', [
+	'$compile',
+	function($compile) {
+
+		var group = $('.elements')
+
+		return {
+			restrict: 'E',
+			templateUrl: 'testTemplate.html', 
+			link: function(scope, elem, attrs) {
+				scope.initial = 'initial' in attrs;
+
+				scope.children = []
+
+				scope.$watchGroup([
+						function() {return scope.children.reduce(function(total,item) {return total + +item.percentage},0)},
+						function() {return scope.children.length > 0}
+					],
+					function(vals) {
+						if(!vals[1]) return;
+						if(vals[0] < 100) console.log('less than 100',vals[0]);
+						if(vals[0] > 100) console.log('more than 100',vals[0]);
+					}
+				)
+
+				scope.actualElement = elem
+				if( !('root' in attrs) ) {
+					$(elem).css({
+						'left':'15px',
+						'position':'relative'
+					});
+				}
+
+				scope.percentage = 0
+				scope.$watchGroup(['$parent.dollars','percentage'], function(){
+					scope.dollars = scope.$parent ? scope.percentage * scope.$parent.dollars : 0
+				})
+
+				//eventually, move this functionality into a single button at the top of the form
+				scope.newElem = function() {
+					var newItem = $('<form-item root></form-item>')
+					group.append(newItem)
+					$compile(newItem)(scope.$new(true))
+				}
+
+				scope.newChild = function() {
+					var newItem = $('<form-item></form-item>')
+					elem.append(newItem)
+					$compile(newItem)(scope.$new(true))
+					scope.children.push(newItem.scope())
+				}
+
+				scope.removeElem = function() {
+					elem.remove();
+					scope.$destroy()
+				}
+
+			}
+		}
+	}
+])
+
 .controller('codeCtrl', function($scope){
 	// $scope.code="function add(a,b){return a+b}"
 
